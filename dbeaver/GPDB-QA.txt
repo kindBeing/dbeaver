@@ -1,0 +1,39 @@
+1. CREATE TABLE foo (a int, b text) DISTRIBUTED BY (a);
+
+- How to set a schema as active in order to avoid specifying qualified names.
+- Refreshing the schema/database to show newly create tables. 
+
+
+2. CREATE TABLE bar (a int, b text) WITH (appendonly=true) DISTRIBUTED BY (a);
+
+- DDL does not include the 'with(appendonly=true)' clause.
+- As per the documentation UPDATE and DELETE are not allowed on append-optimized tables in 
+a serializable transaction and will cause the transaction to abort. But even when 
+appendonly=true is set, UPDATE and DELETE work. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Questions:
+1. What do we mean by ' CLUSTER, DECLARE...FOR UPDATE, and triggers are not supported with append-optimized tables.'
